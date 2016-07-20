@@ -86,7 +86,7 @@ class HSProductViewController: UIViewController {
                                                      runImageTransitionIfCached: false,
                                                      completion: nil)
             self.nameLabel.text = productDetail.name
-            self.priceLabel.text = "S$" + productDetail.price.stringValue
+            self.priceLabel.text = HSCartUtility.sharedCartUtility.currencyFormatter.stringFromNumber(productDetail.price)
             self.onSaleLabel.hidden = !productDetail.under_sale
             self.descriptionLabel.text = productDetail.productDescription
             if HSCartUtility.sharedCartUtility.checkIfItemExistsInCart(productId) {

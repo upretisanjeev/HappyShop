@@ -16,6 +16,20 @@ class HSCartUtility {
     
     // MARK: - Singleton declaration
     static let sharedCartUtility = HSCartUtility()
+    
+    // MARK: - Properties
+    /// formatting currency
+    lazy var currencyFormatter: NSNumberFormatter = {
+        let currencyFormatter = NSNumberFormatter()
+        currencyFormatter.numberStyle = .CurrencyStyle
+        // currently hardcoding for India
+        currencyFormatter.locale = NSLocale.init(localeIdentifier: "en_IN")
+        currencyFormatter.currencySymbol = "INR"
+        currencyFormatter.currencyGroupingSeparator = ","
+        currencyFormatter.currencyDecimalSeparator = "."
+        return currencyFormatter;
+    }()
+    
     private init() {} //This prevents others from using the default '()' initializer for this class.
     
     /// Save the given productId in user's cart.
@@ -90,4 +104,5 @@ class HSCartUtility {
             tabBarItemOfCart?.badgeValue = String(itemsIdInCart!.count)
         }
     }
+    
 }

@@ -84,7 +84,8 @@ class HSCategoryViewController: UICollectionViewController, UINavigationControll
         // Configure the cell
         let product = products[indexPath.row]
         cell.name.text = product.name
-        cell.price.text = "S$" + product.price.stringValue
+        cell.price.text = HSCartUtility.sharedCartUtility.currencyFormatter.stringFromNumber(product.price)
+
         cell.onSale.hidden = !product.under_sale
         cell.productImageView?.af_setImageWithURL(NSURL(string: product.img_url)!,
                                            placeholderImage: UIImage(named: "placeholder"),
